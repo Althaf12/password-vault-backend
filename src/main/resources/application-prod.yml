@@ -1,0 +1,40 @@
+spring:
+  config:
+    import: vault://
+  cloud:
+    vault:
+      uri: ${VAULT_ADDR}
+      authentication: APPROLE
+      approle:
+        role-id: ${VAULT_ROLE_ID}
+        secret-id: ${VAULT_SECRET_ID}
+      fail-fast: false
+      kv:
+        enabled: true
+        backend: secret
+        default-context: eternivity/auth
+        profiles-separator: DISABLED
+
+  datasource:
+    url: ${db_url_passwordvault}
+    username: ${db_username}
+    password: ${db_password}
+
+jwt:
+  secret: ${jwt_secret}
+  expiration: ${jwt_expiration}
+  access-token:
+    expiration: ${jwt_access_expiration}
+  refresh-token:
+    expiration: ${jwt_refresh_expiration}
+  issuer: ${jwt_issuer}
+
+app:
+  cookie:
+    domain: ${cookie_domain}
+    secure: ${cookie_secure}
+  cors:
+    allowed-origins: ${cors_allowed_origins}
+    allow-credentials: true
+  allowed-redirect-domains: ${allowed_redirect_domains}
+
