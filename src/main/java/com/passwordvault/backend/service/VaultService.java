@@ -14,8 +14,6 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 // NOTE: UserService is injected to ensure the user row exists in the `users` table
 // before any child-table inserts (FK constraint enforcement).
